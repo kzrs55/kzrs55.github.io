@@ -1,27 +1,27 @@
 
 <!DOCTYPE html>
-<html lang="null">
+<html lang="zh-CN">
     
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hexo">
-    <title>Hexo</title>
-    <meta name="author" content="John Doe">
+    <meta name="generator" content="zjutK&#39;s Blog">
+    <title>zjutK&#39;s Blog</title>
+    <meta name="author" content="zjutK">
     
     
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description">
+    <meta name="description" content="go ahead and never turn back">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="zjutK's Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:site_name" content="zjutK's Blog">
+<meta property="og:description" content="go ahead and never turn back">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="zjutK's Blog">
+<meta name="twitter:description" content="go ahead and never turn back">
     
     
         
@@ -47,7 +47,7 @@
 <header id="header" data-behavior="2">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <h1 class="header-title">
-        <a class="header-title-link" href="/ ">Hexo</a>
+        <a class="header-title-link" href="/ ">zjutK&#39;s Blog</a>
     </h1>
     
         
@@ -178,15 +178,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
-                        <a class="link-unstyled" href="/2016/04/24/多重网络的特征向量中心性/">
-                            多重网络的特征向量中心性
+                        <a class="link-unstyled" href="/2016/04/25/节点和链路重要性算法/">
+                            节点和链路重要性算法
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time itemprop="datePublished" content="Sun Apr 24 2016 12:58:23 GMT+0800">
+    <time itemprop="datePublished" content="Mon Apr 25 2016 10:49:23 GMT+0800">
 	
-		    24 Apr 2016
+		    25 4月 2016
     	
     </time>
     
@@ -195,12 +195,123 @@
             
             
                 <div class="postShorten-content" itemprop="articleBody">
-                    <p>##Eigenvector centrality of nodes in multiplex networks</p>
+                    <p>##A new mutually reinforcing network node and link ranking algorithm</p>
+<blockquote>
+<p>摘要:提出一张叫做NWRank算法，能够在对节点排名的同时对边进行排名，该算法结合了HITs与PageRank算法</p>
+</blockquote>
+<p>[TOC]</p>
+<p>##算法<br>假设$G(N,M)$表示一个有n个节点的集合N和m条边的集合M所组成，另外假设节点不存在自环。重要节点定义为L的操作，重要边定义为Q的操作如下表示</p>
+<blockquote>
+<p>$x=L(y),y=Q(x)\tag{1}$</p>
+</blockquote>
+<p>其中$x=(x_1,x_2,…,x_n)^T,y=(y_1,y_2,…,y_n)^T$表示包含节点和链路排名的矩阵，L操作和Q操作可以表示为</p>
+<blockquote>
+<p>$x=Wy,y=Zx\tag{2}$</p>
+</blockquote>
+<p>其中W是一个n*m的矩阵，Z是一个m*n的矩阵,其中</p>
+<blockquote>
+<p>$w_{ia}=\begin{cases}1&amp;边a指向节点i\\0&amp;其他情况\end{cases}\tag{3}$</p>
+<p>$z_{bj}=\begin{cases}1&amp;节点j是边b的某个节点\\0&amp;其他情况\end{cases}\tag{4}$</p>
+</blockquote>
+<p>$i,j,k…\in 节点N a,b,c…\in 边M$ <strong>(W是Z的转置矩阵)</strong><br>类似于HITs，x与y在达到下一个状态的时候必须被归一化，从而实现一个迭代过程</p>
+<blockquote>
+<p>$x(t+1)=Wy(t)=WZx(t)\tag{5}$<br>$y(t+1)=Zx(t+1)=ZWy(T)\tag{6}$<br>x,y最终收敛于WZ,ZW的主要特征向量，或者线性组合。</p>
+<p>##NWRank 算法<br>新的方法中将Z矩阵替换成如下的h矩阵:<br>$h_{bj}=\begin{cases}\alpha \frac{k_b}{\sum_qk_a}+(1-\alpha)\frac{BC_b}{\sum_qBC_a}\\0&amp;otherwise\end{cases}\tag{7}$</p>
+</blockquote>
+<p>$h_{bj}$是从节点j到边b的分数分布，q是连接点节点j的边的数量，$k_b,k_a$是节点b和节点a的度数，$BC_b,BC_a$代表边b，a介数中心性的等级，$\alpha$代表权重系数，因此W矩阵可以被修改，</p>
+<blockquote>
+<p>$x(t+1)=Wy(t)=WHx(t)\tag{8}$<br>$y(t+1)=Hx(t+1)=HWy(t)\tag{9}$</p>
+</blockquote>
+<p>##应用到网络<br>N是节点的数量，$d_{ij}$代表i与j的最短路径网络效率作为衡量网络的性能指标E</p>
+<blockquote>
+<p>$E=\frac{1}{N(N-1)}\sum_{i\not= j}\frac{1}{d_{ij}}\tag{10}$</p>
+</blockquote>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2016/04/25/节点和链路重要性算法/#post-footer" class="postShorten-excerpt_link link">
+                                Commenter et partager
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2016/04/24/hexo使用/">
+                            hexo使用
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Sun Apr 24 2016 12:58:23 GMT+0800">
+	
+		    24 4月 2016
+    	
+    </time>
+    
+</div>
+            </div>
+            
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2016/04/24/hexo使用/#post-footer" class="postShorten-excerpt_link link">
+                                Commenter et partager
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2016/04/24/多重网络的特征向量中心性/">
+                            多重网络的特征向量中心性
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Sun Apr 24 2016 12:58:23 GMT+0800">
+	
+		    24 4月 2016
+    	
+    </time>
+    
+</div>
+            </div>
+            
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <p>###Eigenvector centrality of nodes in multiplex networks</p>
 <blockquote>
 <p>摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地位的措施之间的关系。</p>
 </blockquote>
 <p>许多生物，社会，和技术系统可以找到合适的复杂网络来表示，其中节点表示为系统的成分，而边代表他们之间的相互作用，在一般情况下，该节点的相互作用需要一个更精确的映射作为一个系统的组成<strong>(通常同时以多种方式连接)</strong>不是简单链路。举例来说，在社交网络中，可以考虑几种不同演员的关系：友谊，附近，亲属关系，相同的文化社会的成员关系，合作伙伴关系，或同事关系等。在这种情况下，赋予多重网络结构关系是非常有用的。这种表示反映了节点通过多个层的联系，这不能由传统单层网络表示被捕获的相互作用。这种多重代表制一直被认为是由社会学家，虽然有些成果涉及多重网络建模和结构近来已经提出，在这样的网络核心参数的研究还没有得到解决令人满意。本文的目的是提出多重网络的核心定义在和应用潜力。</p>
-<p>##注释<br>在本文中，我们考虑多重网络$G$,主要由$m\in N$层网络$G1,…,G_M$每一层网络都是无向网路，即$G_k=(X,E_k)$,而$X=\{e_1,…e_n\}$(每一层的网络都有相同的节点数)。每一层邻接矩阵的转置$G_k$由$A_k=(a_{ij}^k)\in R^{n*n}$所构成：</p>
+<p>###注释<br>在本文中，我们考虑多重网络$G$,主要由$m\in N$层网络$G1,…,G_M$每一层网络都是无向网路，即$G_k=(X,E_k)$,而$X=\{e_1,…e_n\}$(每一层的网络都有相同的节点数)。每一层邻接矩阵的转置$G_k$由$A_k=(a_{ij}^k)\in R^{n*n}$所构成：</p>
 <blockquote>
 <p>$a_{ij}^k=\begin{cases}1&amp;if (e_j,e_i)\in E_k\\0&amp;otherwise \end{cases}$</p>
 </blockquote>
@@ -218,7 +329,7 @@
 <li>致力于建立合理的条件下，措施的合理性和一致性</li>
 <li>报告了一些计算机实验和模拟显示当这些参数应用到相同的复用网络时，如何采取措施，提供不同的结果</li>
 </ol>
-<p>##连接多重网络时特征向量中心性指标的数字模型<br>在多重网络的情况下，要解决的核心问题是：如何才能兼顾不同子网之间的所有互动（渠道，社区，层）并非所有的人都具有同样的重要性？为了获得一个节点的中心，有必要考虑中心节点（重要性，影响）通过不同的信道（层传播在整个网络中）。例如，全球社交网络（如Facebook或Twitter）的特点是非常庞杂，这也是典型的互动单元之间的领域广泛，包括气候系统，博弈论，交互基础设施，等等。<br>参照网络G，对于每个层，可以考虑$G_k$的经典特征向量中心作为主特征向量（如果存在）。具体而言，该层$G_k$中的一个节点$e_i$的特征向量中心将是正定和规范化向量$c_k\in R^n$相当于矩阵的最大特征值的第i个条目。以类似的方式，投影的网络$\overline G$的特征向量中心将是$\overline A$的主本征向量。这些载体的存在和唯一的Perron-Frobenius定理任何对称矩阵正元素的保证。<br>有趣的是，Perron-Frobenius定理可方便地扩展到多路网络，导致节点的中心位置更深的概念。我们注意到的Perron-Frobenius定理的其他扩展已亲合影超图和非负张量。<br>一旦所有的特征向量中心性计算，可以考虑的G独立层特征向量中心性（简称为G的独立层核心）为基体，类似于矩阵</p>
+<p>###连接多重网络时特征向量中心性指标的数字模型<br>在多重网络的情况下，要解决的核心问题是：如何才能兼顾不同子网之间的所有互动（渠道，社区，层）并非所有的人都具有同样的重要性？为了获得一个节点的中心，有必要考虑中心节点（重要性，影响）通过不同的信道（层传播在整个网络中）。例如，全球社交网络（如Facebook或Twitter）的特点是非常庞杂，这也是典型的互动单元之间的领域广泛，包括气候系统，博弈论，交互基础设施，等等。<br>参照网络G，对于每个层，可以考虑$G_k$的经典特征向量中心作为主特征向量（如果存在）。具体而言，该层$G_k$中的一个节点$e_i$的特征向量中心将是正定和规范化向量$c_k\in R^n$相当于矩阵的最大特征值的第i个条目。以类似的方式，投影的网络$\overline G$的特征向量中心将是$\overline A$的主本征向量。这些载体的存在和唯一的Perron-Frobenius定理任何对称矩阵正元素的保证。<br>有趣的是，Perron-Frobenius定理可方便地扩展到多路网络，导致节点的中心位置更深的概念。我们注意到的Perron-Frobenius定理的其他扩展已亲合影超图和非负张量。<br>一旦所有的特征向量中心性计算，可以考虑的G独立层特征向量中心性（简称为G的独立层核心）为基体，类似于矩阵</p>
 <blockquote>
 <p>$C=(c_1|c_2|…|c_m)\in R^{n*m}$</p>
 </blockquote>
@@ -256,46 +367,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2016/04/24/hexo使用/">
-                            hexo使用
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" content="Sun Apr 24 2016 12:58:23 GMT+0800">
-	
-		    24 Apr 2016
-    	
-    </time>
-    
-</div>
-            </div>
-            
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2016/04/24/hexo使用/#post-footer" class="postShorten-excerpt_link link">
-                                Commenter et partager
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -309,7 +380,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2016 John Doe. All Rights Reserved.
+        Copyrights &copy; 2016 zjutK. All Rights Reserved.
     </span>
 </footer>
 
@@ -325,7 +396,7 @@
             <i class="fa fa-remove"></i>
         </div>
         
-            <h4 id="about-card-name">John Doe</h4>
+            <h4 id="about-card-name">zjutK</h4>
         
             <h5 id="about-card-bio"><p>author.bio</p>
 </h5>

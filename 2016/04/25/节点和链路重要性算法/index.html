@@ -6,29 +6,38 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="zjutK&#39;s Blog">
-    <title>多重网络的特征向量中心性 - zjutK&#39;s Blog</title>
+    <title>节点和链路重要性算法 - zjutK&#39;s Blog</title>
     <meta name="author" content="zjutK">
     
     
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="###Eigenvector centrality of nodes in multiplex networks
+    <meta name="description" content="##A new mutually reinforcing network node and link ranking algorithm
 
-摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地">
+摘要:提出一张叫做NWRank算法，能够在对节点排名的同时对边进行排名，该算法结合了HITs与PageRank算法
+
+[TOC]
+##算法假设$G(N,M)$表示一个有n个节点的集合N和m条边的集合M所组成，另外假设节点不存在自环。重要节点定义为L的操作，重要">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="多重网络的特征向量中心性">
-<meta property="og:url" content="http://yoursite.com/2016/04/24/多重网络的特征向量中心性/index.html">
+<meta property="og:title" content="节点和链路重要性算法">
+<meta property="og:url" content="http://yoursite.com/2016/04/25/节点和链路重要性算法/index.html">
 <meta property="og:site_name" content="zjutK's Blog">
-<meta property="og:description" content="###Eigenvector centrality of nodes in multiplex networks
+<meta property="og:description" content="##A new mutually reinforcing network node and link ranking algorithm
 
-摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地">
-<meta property="og:updated_time" content="2016-04-25T02:43:14.000Z">
+摘要:提出一张叫做NWRank算法，能够在对节点排名的同时对边进行排名，该算法结合了HITs与PageRank算法
+
+[TOC]
+##算法假设$G(N,M)$表示一个有n个节点的集合N和m条边的集合M所组成，另外假设节点不存在自环。重要节点定义为L的操作，重要">
+<meta property="og:updated_time" content="2016-04-25T02:49:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多重网络的特征向量中心性">
-<meta name="twitter:description" content="###Eigenvector centrality of nodes in multiplex networks
+<meta name="twitter:title" content="节点和链路重要性算法">
+<meta name="twitter:description" content="##A new mutually reinforcing network node and link ranking algorithm
 
-摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地">
+摘要:提出一张叫做NWRank算法，能够在对节点排名的同时对边进行排名，该算法结合了HITs与PageRank算法
+
+[TOC]
+##算法假设$G(N,M)$表示一个有n个节点的集合N和m条边的集合M所组成，另外假设节点不存在自环。重要节点定义为L的操作，重要">
     
     
         
@@ -182,13 +191,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            多重网络的特征向量中心性
+            节点和链路重要性算法
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Sun Apr 24 2016 12:58:23 GMT+0800">
+    <time itemprop="datePublished" content="Mon Apr 25 2016 10:49:23 GMT+0800">
 	
-		    24 4月 2016
+		    25 4月 2016
     	
     </time>
     
@@ -197,50 +206,37 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>###Eigenvector centrality of nodes in multiplex networks</p>
+            <p>##A new mutually reinforcing network node and link ranking algorithm</p>
 <blockquote>
-<p>摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地位的措施之间的关系。</p>
+<p>摘要:提出一张叫做NWRank算法，能够在对节点排名的同时对边进行排名，该算法结合了HITs与PageRank算法</p>
 </blockquote>
-<p>许多生物，社会，和技术系统可以找到合适的复杂网络来表示，其中节点表示为系统的成分，而边代表他们之间的相互作用，在一般情况下，该节点的相互作用需要一个更精确的映射作为一个系统的组成<strong>(通常同时以多种方式连接)</strong>不是简单链路。举例来说，在社交网络中，可以考虑几种不同演员的关系：友谊，附近，亲属关系，相同的文化社会的成员关系，合作伙伴关系，或同事关系等。在这种情况下，赋予多重网络结构关系是非常有用的。这种表示反映了节点通过多个层的联系，这不能由传统单层网络表示被捕获的相互作用。这种多重代表制一直被认为是由社会学家，虽然有些成果涉及多重网络建模和结构近来已经提出，在这样的网络核心参数的研究还没有得到解决令人满意。本文的目的是提出多重网络的核心定义在和应用潜力。</p>
-<p>###注释<br>在本文中，我们考虑多重网络$G$,主要由$m\in N$层网络$G1,…,G_M$每一层网络都是无向网路，即$G_k=(X,E_k)$,而$X=\{e_1,…e_n\}$(每一层的网络都有相同的节点数)。每一层邻接矩阵的转置$G_k$由$A_k=(a_{ij}^k)\in R^{n*n}$所构成：</p>
+<p>[TOC]</p>
+<p>##算法<br>假设$G(N,M)$表示一个有n个节点的集合N和m条边的集合M所组成，另外假设节点不存在自环。重要节点定义为L的操作，重要边定义为Q的操作如下表示</p>
 <blockquote>
-<p>$a_{ij}^k=\begin{cases}1&amp;if (e_j,e_i)\in E_k\\0&amp;otherwise \end{cases}$</p>
+<p>$x=L(y),y=Q(x)\tag{1}$</p>
 </blockquote>
-<p>$1\leq i,j\leq n并且1\leq k\leq m$ $G$的投影网络$\overline G=(X,E)$</p>
+<p>其中$x=(x_1,x_2,…,x_n)^T,y=(y_1,y_2,…,y_n)^T$表示包含节点和链路排名的矩阵，L操作和Q操作可以表示为</p>
 <blockquote>
-<p>$E=\bigcup _{k=1}^m E_k$</p>
+<p>$x=Wy,y=Zx\tag{2}$</p>
 </blockquote>
-<p>$\overline G$的邻接矩阵的转置由$\overline A=(\overline a_{ij})\in R^{n*n}并且i\leq i,j\leq n$</p>
+<p>其中W是一个n*m的矩阵，Z是一个m*n的矩阵,其中</p>
 <blockquote>
-<p>$\overline a_{ij}^k=\begin{cases}1&amp;if a_{ij}^k\not =0由于1\leq k\leq m<br>\\0&amp;otherwise \end{cases}$</p>
+<p>$w_{ia}=\begin{cases}1&amp;边a指向节点i\\0&amp;其他情况\end{cases}\tag{3}$</p>
+<p>$z_{bj}=\begin{cases}1&amp;节点j是边b的某个节点\\0&amp;其他情况\end{cases}\tag{4}$</p>
 </blockquote>
-<p>本文主要做了以下事情:</p>
-<ol>
-<li>介绍各种表示中心性的参数</li>
-<li>致力于建立合理的条件下，措施的合理性和一致性</li>
-<li>报告了一些计算机实验和模拟显示当这些参数应用到相同的复用网络时，如何采取措施，提供不同的结果</li>
-</ol>
-<p>###连接多重网络时特征向量中心性指标的数字模型<br>在多重网络的情况下，要解决的核心问题是：如何才能兼顾不同子网之间的所有互动（渠道，社区，层）并非所有的人都具有同样的重要性？为了获得一个节点的中心，有必要考虑中心节点（重要性，影响）通过不同的信道（层传播在整个网络中）。例如，全球社交网络（如Facebook或Twitter）的特点是非常庞杂，这也是典型的互动单元之间的领域广泛，包括气候系统，博弈论，交互基础设施，等等。<br>参照网络G，对于每个层，可以考虑$G_k$的经典特征向量中心作为主特征向量（如果存在）。具体而言，该层$G_k$中的一个节点$e_i$的特征向量中心将是正定和规范化向量$c_k\in R^n$相当于矩阵的最大特征值的第i个条目。以类似的方式，投影的网络$\overline G$的特征向量中心将是$\overline A$的主本征向量。这些载体的存在和唯一的Perron-Frobenius定理任何对称矩阵正元素的保证。<br>有趣的是，Perron-Frobenius定理可方便地扩展到多路网络，导致节点的中心位置更深的概念。我们注意到的Perron-Frobenius定理的其他扩展已亲合影超图和非负张量。<br>一旦所有的特征向量中心性计算，可以考虑的G独立层特征向量中心性（简称为G的独立层核心）为基体，类似于矩阵</p>
+<p>$i,j,k…\in 节点N a,b,c…\in 边M$ <strong>(W是Z的转置矩阵)</strong><br>类似于HITs，x与y在达到下一个状态的时候必须被归一化，从而实现一个迭代过程</p>
 <blockquote>
-<p>$C=(c_1|c_2|…|c_m)\in R^{n*m}$</p>
+<p>$x(t+1)=Wy(t)=WZx(t)\tag{5}$<br>$y(t+1)=Zx(t+1)=ZWy(T)\tag{6}$<br>x,y最终收敛于WZ,ZW的主要特征向量，或者线性组合。</p>
+<p>##NWRank 算法<br>新的方法中将Z矩阵替换成如下的h矩阵:<br>$h_{bj}=\begin{cases}\alpha \frac{k_b}{\sum_qk_a}+(1-\alpha)\frac{BC_b}{\sum_qBC_a}\\0&amp;otherwise\end{cases}\tag{7}$</p>
 </blockquote>
-<p>C是一个随机列表，$c_k&gt;0并且||c_k||_1=1,1\leq k\leq m$<br>铭记中心节点必须考虑邻国的中心地位，并考虑所有的图层具有相同的重要性</p>
+<p>$h_{bj}$是从节点j到边b的分数分布，q是连接点节点j的边的数量，$k_b,k_a$是节点b和节点a的度数，$BC_b,BC_a$代表边b，a介数中心性的等级，$\alpha$代表权重系数，因此W矩阵可以被修改，</p>
 <blockquote>
-<p>$\forall {i,j}\in X,c(i)\infty c(j) if(j\rightarrow i)\in G_l,l\in{1,…,m}$</p>
+<p>$x(t+1)=Wy(t)=WHx(t)\tag{8}$<br>$y(t+1)=Hx(t+1)=HWy(t)\tag{9}$</p>
 </blockquote>
-<p>这允许限定均匀的特征向量中心性,</p>
+<p>##应用到网络<br>N是节点的数量，$d_{ij}$代表i与j的最短路径网络效率作为衡量网络的性能指标E</p>
 <blockquote>
-<p>$\tilde{A}=\sum _{k=1}^m A_m$</p>
+<p>$E=\frac{1}{N(N-1)}\sum_{i\not= j}\frac{1}{d_{ij}}\tag{10}$</p>
 </blockquote>
-<p>这种情况发生在社交网络，其中不同的个体可以具有与其他人不同的关系，如何测量个体在网络的中心。<br>再进一步，可以考虑该层是具有不同水平的重要性（或影响）在网络的不同层的相关联的，并包括这种在基体占层间的相互影响的信息。因此，为了计算特定层内的节点的重要性（或影响），必须还考虑到也所有其他层，因为其中一些可能是相关于该计算。考虑，例如，一个老板要去一家健身房，而这家健身房也是他的员工也去：在健身房层内两个同伴之间的关​​系具有与办公室层内部发生完全不同的性质，但主要作用在老板（即他的核心地位），在这种情况下可以比，如果他的办公室经常到该健身房的唯一一个顾客更大。换言之，需要考虑的情况之间的层的影响是不均匀的。<br>为此，介绍一个影响矩阵$W=(w_{ij})\in R^{m*m}其中W为非负矩阵即W\geq 0 ，w_{ij}$测量$G_j$在$G_i$层上的影响，一旦$G$和$W=(w_{ij})$的问题被解决了，然后定一个本地异构向量中心$G$在每个层</p>
-<blockquote>
-<p>$A_k^*=\sum_{j=1}^{m}w_{kj}A_j$</p>
-</blockquote>
-<p>多重网络$G$可以定义为</p>
-<blockquote>
-<p>$A_k=(c_1|c_2|…|c_m)\in R^{n*m}$</p>
-</blockquote>
-<p>另一个重要的方面待阐明的是，在一般情况下，一个特定的k层中的一个节点的ei的中心可能不仅在链接到k层内也能EI的所有其他邻居属于EI邻居依赖其它层。这就是知识的不同领域的科学引文的情况;的确，可以想象两位科学家（化学家和物理学家），其中一人被授予诺贝尔文学奖：其他科学家的重要性将显著增加，即使诺贝尔奖获得者有其他研究者的区域内一些引文。这种启发式的参数引入引出的核心的另一个概念：给定的多路网络G和一个影响矩阵W1/4ðwijÞ，G的全球异构特征向量cetrality（简称为G的全球核心）被定义为一个正和归特征向量C 2矩阵的RNM（如果它存在）</p>
 
             
         </div>
@@ -250,7 +246,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGÉ DANS</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/复杂网络/">复杂网络</a> <a class="tag tag--primary tag--small t-link" href="/tags/多重网络/">多重网络</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/复杂网络/">复杂网络</a>
 
             </div>
         
@@ -259,7 +255,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/24/hexo使用/"  data-tooltip="hexo使用">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PRÉCÉDENT</span>
@@ -267,7 +263,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/24/hexo使用/" data-tooltip="hexo使用">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">SUIVANT</span>
                     <i class="fa fa-angle-right"></i>
@@ -282,17 +278,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/24/多重网络的特征向量中心性/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/25/节点和链路重要性算法/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/24/多重网络的特征向量中心性/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/25/节点和链路重要性算法/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/04/24/多重网络的特征向量中心性/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/04/25/节点和链路重要性算法/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -330,7 +326,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/24/hexo使用/"  data-tooltip="hexo使用">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PRÉCÉDENT</span>
@@ -338,7 +334,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/24/hexo使用/" data-tooltip="hexo使用">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">SUIVANT</span>
                     <i class="fa fa-angle-right"></i>
@@ -353,17 +349,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/24/多重网络的特征向量中心性/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/25/节点和链路重要性算法/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/24/多重网络的特征向量中心性/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/25/节点和链路重要性算法/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/04/24/多重网络的特征向量中心性/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/04/25/节点和链路重要性算法/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -383,17 +379,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/24/多重网络的特征向量中心性/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/25/节点和链路重要性算法/">
                 <i class="fa fa-google-plus"></i><span class="">Partager sur Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/24/多重网络的特征向量中心性/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/25/节点和链路重要性算法/">
                 <i class="fa fa-facebook-official"></i><span>Partager sur Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/04/24/多重网络的特征向量中心性/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/04/25/节点和链路重要性算法/">
                 <i class="fa fa-twitter"></i><span>Partager sur Twitter</span>
             </a>
         </li>
