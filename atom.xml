@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-25T02:49:34.000Z</updated>
+  <updated>2016-04-26T12:16:33.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,105 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>拉普拉斯中心性</title>
+    <link href="http://yoursite.com/2016/04/26/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E4%B8%AD%E5%BF%83%E6%80%A7/"/>
+    <id>http://yoursite.com/2016/04/26/拉普拉斯中心性/</id>
+    <published>2016-04-26T12:16:04.000Z</published>
+    <updated>2016-04-26T12:16:33.000Z</updated>
+    
+    <content type="html">&lt;p&gt;##简介&lt;br&gt;加权网络的三种度量方法包括，度数中心性，接近中心性，介数中心性。本文提出一种叫做拉普拉斯的矩阵方法来度量中心性，&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$E_L(G)=\sum_{i}\lambda^2_i$&lt;br&gt;$\lambda_i$是权重网络G拉普拉斯矩阵的特征值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在加权网络中，点可以表示个体，组织亦或是城市，边可以表示成联系，贸易，合作，友谊等等&lt;/p&gt;
+&lt;p&gt;无权网络的已经知道的比较出名的度量中心性的标准主要有&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;度中心性&lt;/li&gt;
+&lt;li&gt;接近数中心性&lt;/li&gt;
+&lt;li&gt;介数中心性&lt;/li&gt;
+&lt;li&gt;特征向量中心性&lt;/li&gt;
+&lt;li&gt;子图中心性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;类似无权网络的度中心性，接近数中心性中心性，顺带着这些加权网络的中心性度量将无权网络时期的缺点也带过来了。例如在[1]中提出：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The simplicity of degree method is an advantage and also is an dis- advantage: only the local structure around a vertex is calculated and it does not take into consideration the global structure of the network; for example, although a vertex might be connected to many others, it might not be in a position to reach others quickly to access resources, such as information or knowledge&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;拉普拉斯中心性能够很好的解决上述的问题，首先拉普拉斯中心性类似特征向量中心性考虑节点的中心性不仅涉及近邻的重要性还涉及其近邻所相连的网络。&lt;/p&gt;
+&lt;p&gt;##拉普拉斯算法&lt;br&gt;考虑加权网络$G=(V,E,W)$,$V(G)=\{v1，v2，v3…\}$这是点的集合，$e=(vi,vj)$ 每条边的权重可以设置为$w_{i,j}$，如果点和点之间没有连接那么$w_{i,j}=0$&lt;br&gt;可以定义&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$W(G)=\left\{&lt;br&gt; \begin{matrix}&lt;br&gt;   0 &amp;amp; w_{1,2} &amp;amp;\dots &amp;amp; w_{1,n} \\&lt;br&gt;   w_{2,1} &amp;amp; 0 &amp;amp; \dots &amp;amp; w_{2,n} \\&lt;br&gt;   . &amp;amp; . &amp;amp; . &amp;amp; . \\&lt;br&gt;   w_{n,1} &amp;amp; w_{n,2} &amp;amp; \dots &amp;amp; 0&lt;br&gt;  \end{matrix}&lt;br&gt;  \right\} \tag{1}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  并且&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$X(G)=\left\{&lt;br&gt;  \begin{matrix}&lt;br&gt;  x_1 &amp;amp; 0 &amp;amp; \dots &amp;amp;0\\&lt;br&gt;  0 &amp;amp; x_2 &amp;amp; \dots &amp;amp;0\\&lt;br&gt;  . &amp;amp; . &amp;amp; . &amp;amp;.\\&lt;br&gt;  0 &amp;amp; 0 &amp;amp; \dots &amp;amp;x_n\\&lt;br&gt;  \end{matrix}&lt;br&gt;  \right\} \tag{2}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$x_i=\sum_{j=1}^nw_{i,j}=\sum_{u\in N(v_i)}w_{v_i,u}$&lt;br&gt;$x_i$表示某个点的权值之和，$N(v_j)$表示$v_i$的邻居节点&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;定义1:$L(G)=X(G)-W(G)$我们叫$L(G)$就是拉普拉斯矩阵&lt;/li&gt;
+&lt;li&gt;定义2:$G=(V,E,W)$为一个加权网络，那么$\lambda_1,\lambda_2,\lambda_3,\dots,\lambda_n$就是拉普拉斯矩阵的特征值，那么拉普拉斯矩阵G的能量值就可以被定义为$E_L(G)=\sum_{i=1}^n \lambda_i^2$&lt;br&gt;I&lt;blockquote&gt;
+&lt;p&gt;定理1:对于任何一个加权网络$G=(V,E,W)$就有$E_L(G)=\sum_{i=1}^nx_i^2+2\sum_{i&amp;lt;j}w_{i,j}^2$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;证明:假设$L(G)=\left\{\begin{matrix}&lt;br&gt;x1&amp;amp;-w_{1,2}&amp;amp;\dots&amp;amp;-w_{1,n}\\&lt;br&gt;-w_{2,1}&amp;amp;x_2&amp;amp;\dots&amp;amp;-w_{2,n}\\&lt;br&gt;.&amp;amp;.&amp;amp;.&amp;amp;.\\&lt;br&gt;-w_{n,1}&amp;amp;-w_{n,2}&amp;amp;\dots&amp;amp;x_n&lt;br&gt;\end{matrix}\right\}$&lt;/p&gt;
+&lt;p&gt;那么$L(G)$的特征多项式为:$p(\lambda)=\lambda^n+a_{n-1}\lambda^{n-1}+a_{n-2}\lambda^{n-2}+\dots+a_\lambda+a_0$&lt;br&gt;我们可以推论&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$a_0=(-1)^ndet(L(G))$&lt;br&gt;$a_1=-tr(L(G))$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;L(G)的行列式由L(G)的矩阵所决定，tr(L(G))是L(G)矩阵的轨迹，由韦达定理可知&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$\sum_{i=1}^n\lambda=-a_{n-1}$&lt;br&gt;$\sum_{i&amp;lt;j}\lambda_i\lambda_j=a_{n-2}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;由$w_{i,j}=w_{j,i}$可以计算$a_{n-2}$的系数$\lambda^n-2$ 可知:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$\sum_{i=1}^n\lambda_i=\sum_{i=1}^nx_i$&lt;br&gt;$\sum_{i&amp;lt;j}\lambda_i\lambda_j=\sum_{i&amp;lt;j}x_ix_j-\sum_{i&amp;lt;j}w_{i,j}^2$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;由上述的式子我们可以得出:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$E_L(G)=\sum_{i=1}^n\lambda_i^2=(\sum_{i=1}^n\lambda_i)^2-\sum_{i\not=j}\lambda_i\lambda_j$&lt;br&gt;$=(\sum_{i=1}^nx_i)^2-\sum_{i\not=j}x_ix_j+\sum_{i\not=j}w_{i,j}^2$&lt;br&gt;$=\sum_{i=1}^2x_i^2+\sum_{i\not=j}w_{i,j}^2$&lt;br&gt;$=\sum_{i=1}^nx_i^2+2\sum_{i&amp;lt;j}w_{i,j}^2$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;必然结果&lt;/strong&gt;:如果H是G的一个子图，那么$E_L(H)\leq E_L(G)$并且$V(G)-V(H)$也是一个独立的矩阵&lt;/p&gt;
+&lt;p&gt;##拉普拉斯中心性&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定义3 如果网络$G=(V,E,W)$拥有n个点$\{v_1,v_2,…,v_n\}$，那么$G_i$就是i节点从网络G删除后所形成的网络，拉普拉斯中心性$C_L(v_i,G)$被定义为&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$C_L=(v_i,G)=\frac{(\triangle E)}{E_L(G)}=\frac{E_L(G)-E_L(G_i)}{E_L(G)}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##拉普拉斯图论&lt;br&gt;假设网络$G=(V,E,W)$拥有n个点$\{v_1,v_2,…,v_n\}$点&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;定理1:假设网络$G=(V,E,W)$是一个加权网络，v是G中的任意一个点，那么这里有三种类型的2-walks包含v节点&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;假设v节点是第一个节点，那么2-walk的节点数量$NW_2^C(v)=\sum_{y_i\in N(v)}w_{v,y_i}^2$&lt;/li&gt;
+&lt;li&gt;假设v节点是最后一个节点，那么2-walk的节点数量$NW_2^E(v)=\sum_{y_i\in N(v)}(\sum_{z_j\in \{N(y_i)-v\}}w_{v,y_i}w_{y_i,z_j})$&lt;/li&gt;
+&lt;li&gt;假设v节点是中间的那个节点，那么2-walk的节点数量$NW_2^M(v)=\sum_{y_i,y_j\in N(v),y_i\not=y_j}w_{y_i,v}w_{v,y_j}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;定理2:网络$G=(V,E,W)$是一个加权网络拥有n个点$\{v_1,v_2,…,v_n\}$点，删除某个节点之后形成的网络H计算能量差值为&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;$(\triangle E)_i=E_L(G)-E_L(H)$&lt;br&gt;$=4NW_2^C(v_i+2NW_2^E(v_i)+2NW_2^M(v_i)\tag{2.1}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下是证明过程：&lt;br&gt;我们已知$E_L(G)=\sum_{i=1}^nx^2(v_i)+2\sum_{i&amp;lt;j}w_{i,j}^2\tag{2.2}$&lt;br&gt;假设能量守恒不丢失，那么$H=G-v_1$那么$N(v_1)$就是$v_1$节点的邻居节点 权值之和就是，我们可以得出&lt;br&gt;$x’(v_i)=\begin{cases}0,&amp;amp; if\ i=1;\\x(v_i)-w_{v_1,v_i},&amp;amp;if\ v_i\in N(v_1);\\x(v_i),&amp;amp;otherwise.\end{cases}\tag{2.3}$&lt;br&gt;通过定理一和公式2.3可得&lt;br&gt;$E_L(H)=\sum_{v_i\in N(v_1)}(x(v_i)-w_{v_1,v_i})^2+\sum_{v_i\notin N(v_i)}x^2(v_i)+2*\sum_{1&amp;lt;i&amp;lt;j}w_{i,j}^2$&lt;/p&gt;
+&lt;p&gt;[1]T. Opsahl, F. Agneessens, J. Skvoretz, Node centrality in weighted networks: generalizing degree and shortest paths, Social Networks 32 (2010) 245– 251.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##简介&lt;br&gt;加权网络的三种度量方法包括，度数中心性，接近中心性，介数中心性。本文提出一种叫做拉普拉斯的矩阵方法来度量中心性，&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$E_L(G)=\sum_{i}\lambda^2_i$&lt;br&gt;$\lambda_i$是权重网络G拉普拉
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>节点和链路重要性算法</title>
@@ -69,27 +168,11 @@
   </entry>
   
   <entry>
-    <title>hexo使用</title>
-    <link href="http://yoursite.com/2016/04/24/hexo%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yoursite.com/2016/04/24/hexo使用/</id>
-    <published>2016-04-24T04:58:23.000Z</published>
-    <updated>2016-04-24T04:58:23.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>多重网络的特征向量中心性</title>
     <link href="http://yoursite.com/2016/04/24/%E5%A4%9A%E9%87%8D%E7%BD%91%E7%BB%9C%E7%9A%84%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E4%B8%AD%E5%BF%83%E6%80%A7/"/>
     <id>http://yoursite.com/2016/04/24/多重网络的特征向量中心性/</id>
     <published>2016-04-24T04:58:23.000Z</published>
-    <updated>2016-04-25T02:43:14.000Z</updated>
+    <updated>2016-04-26T12:19:52.000Z</updated>
     
     <content type="html">&lt;p&gt;###Eigenvector centrality of nodes in multiplex networks&lt;/p&gt;
 &lt;blockquote&gt;

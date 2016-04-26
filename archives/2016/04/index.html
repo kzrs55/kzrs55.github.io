@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="zjutK&#39;s Blog">
-    <title>Archive: 2016/4 - zjutK&#39;s Blog</title>
+    <title>Archives: 2016/4 - zjutK&#39;s Blog</title>
     <meta name="author" content="zjutK">
     
     
@@ -75,7 +75,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-                    <span class="sidebar-button-desc">Accueil</span>
+                    <span class="sidebar-button-desc">Home</span>
                 </a>
         </li>
         
@@ -111,7 +111,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-                    <span class="sidebar-button-desc">Archive</span>
+                    <span class="sidebar-button-desc">Archives</span>
                 </a>
         </li>
         
@@ -123,7 +123,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-search"></i>
-                    <span class="sidebar-button-desc">Rechercher</span>
+                    <span class="sidebar-button-desc">Search</span>
                 </a>
         </li>
         
@@ -135,7 +135,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-                    <span class="sidebar-button-desc">À propos</span>
+                    <span class="sidebar-button-desc">About</span>
                 </a>
         </li>
         
@@ -179,6 +179,125 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
+                        <a class="link-unstyled" href="/2016/04/26/拉普拉斯中心性/">
+                            拉普拉斯中心性
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Tue Apr 26 2016 20:16:04 GMT+0800">
+	
+		    4月 26, 2016
+    	
+    </time>
+    
+</div>
+            </div>
+            
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <p>##简介<br>加权网络的三种度量方法包括，度数中心性，接近中心性，介数中心性。本文提出一种叫做拉普拉斯的矩阵方法来度量中心性，</p>
+<blockquote>
+<p>$E_L(G)=\sum_{i}\lambda^2_i$<br>$\lambda_i$是权重网络G拉普拉斯矩阵的特征值</p>
+</blockquote>
+<p>在加权网络中，点可以表示个体，组织亦或是城市，边可以表示成联系，贸易，合作，友谊等等</p>
+<p>无权网络的已经知道的比较出名的度量中心性的标准主要有</p>
+<ul>
+<li>度中心性</li>
+<li>接近数中心性</li>
+<li>介数中心性</li>
+<li>特征向量中心性</li>
+<li>子图中心性</li>
+</ul>
+<p>类似无权网络的度中心性，接近数中心性中心性，顺带着这些加权网络的中心性度量将无权网络时期的缺点也带过来了。例如在[1]中提出：</p>
+<blockquote>
+<p>The simplicity of degree method is an advantage and also is an dis- advantage: only the local structure around a vertex is calculated and it does not take into consideration the global structure of the network; for example, although a vertex might be connected to many others, it might not be in a position to reach others quickly to access resources, such as information or knowledge</p>
+</blockquote>
+<p>拉普拉斯中心性能够很好的解决上述的问题，首先拉普拉斯中心性类似特征向量中心性考虑节点的中心性不仅涉及近邻的重要性还涉及其近邻所相连的网络。</p>
+<p>##拉普拉斯算法<br>考虑加权网络$G=(V,E,W)$,$V(G)=\{v1，v2，v3…\}$这是点的集合，$e=(vi,vj)$ 每条边的权重可以设置为$w_{i,j}$，如果点和点之间没有连接那么$w_{i,j}=0$<br>可以定义</p>
+<blockquote>
+<p>$W(G)=\left\{<br> \begin{matrix}<br>   0 &amp; w_{1,2} &amp;\dots &amp; w_{1,n} \\<br>   w_{2,1} &amp; 0 &amp; \dots &amp; w_{2,n} \\<br>   . &amp; . &amp; . &amp; . \\<br>   w_{n,1} &amp; w_{n,2} &amp; \dots &amp; 0<br>  \end{matrix}<br>  \right\} \tag{1}$</p>
+</blockquote>
+<p>  并且</p>
+<blockquote>
+<p>$X(G)=\left\{<br>  \begin{matrix}<br>  x_1 &amp; 0 &amp; \dots &amp;0\\<br>  0 &amp; x_2 &amp; \dots &amp;0\\<br>  . &amp; . &amp; . &amp;.\\<br>  0 &amp; 0 &amp; \dots &amp;x_n\\<br>  \end{matrix}<br>  \right\} \tag{2}$</p>
+</blockquote>
+<p>其中</p>
+<blockquote>
+<p>$x_i=\sum_{j=1}^nw_{i,j}=\sum_{u\in N(v_i)}w_{v_i,u}$<br>$x_i$表示某个点的权值之和，$N(v_j)$表示$v_i$的邻居节点</p>
+</blockquote>
+<ul>
+<li>定义1:$L(G)=X(G)-W(G)$我们叫$L(G)$就是拉普拉斯矩阵</li>
+<li>定义2:$G=(V,E,W)$为一个加权网络，那么$\lambda_1,\lambda_2,\lambda_3,\dots,\lambda_n$就是拉普拉斯矩阵的特征值，那么拉普拉斯矩阵G的能量值就可以被定义为$E_L(G)=\sum_{i=1}^n \lambda_i^2$<br>I<blockquote>
+<p>定理1:对于任何一个加权网络$G=(V,E,W)$就有$E_L(G)=\sum_{i=1}^nx_i^2+2\sum_{i&lt;j}w_{i,j}^2$</p>
+</blockquote>
+</li>
+</ul>
+<p>证明:假设$L(G)=\left\{\begin{matrix}<br>x1&amp;-w_{1,2}&amp;\dots&amp;-w_{1,n}\\<br>-w_{2,1}&amp;x_2&amp;\dots&amp;-w_{2,n}\\<br>.&amp;.&amp;.&amp;.\\<br>-w_{n,1}&amp;-w_{n,2}&amp;\dots&amp;x_n<br>\end{matrix}\right\}$</p>
+<p>那么$L(G)$的特征多项式为:$p(\lambda)=\lambda^n+a_{n-1}\lambda^{n-1}+a_{n-2}\lambda^{n-2}+\dots+a_\lambda+a_0$<br>我们可以推论</p>
+<blockquote>
+<p>$a_0=(-1)^ndet(L(G))$<br>$a_1=-tr(L(G))$</p>
+</blockquote>
+<p>L(G)的行列式由L(G)的矩阵所决定，tr(L(G))是L(G)矩阵的轨迹，由韦达定理可知</p>
+<blockquote>
+<p>$\sum_{i=1}^n\lambda=-a_{n-1}$<br>$\sum_{i&lt;j}\lambda_i\lambda_j=a_{n-2}$</p>
+</blockquote>
+<p>由$w_{i,j}=w_{j,i}$可以计算$a_{n-2}$的系数$\lambda^n-2$ 可知:</p>
+<blockquote>
+<p>$\sum_{i=1}^n\lambda_i=\sum_{i=1}^nx_i$<br>$\sum_{i&lt;j}\lambda_i\lambda_j=\sum_{i&lt;j}x_ix_j-\sum_{i&lt;j}w_{i,j}^2$</p>
+</blockquote>
+<p>由上述的式子我们可以得出:</p>
+<blockquote>
+<p>$E_L(G)=\sum_{i=1}^n\lambda_i^2=(\sum_{i=1}^n\lambda_i)^2-\sum_{i\not=j}\lambda_i\lambda_j$<br>$=(\sum_{i=1}^nx_i)^2-\sum_{i\not=j}x_ix_j+\sum_{i\not=j}w_{i,j}^2$<br>$=\sum_{i=1}^2x_i^2+\sum_{i\not=j}w_{i,j}^2$<br>$=\sum_{i=1}^nx_i^2+2\sum_{i&lt;j}w_{i,j}^2$</p>
+</blockquote>
+<p><strong>必然结果</strong>:如果H是G的一个子图，那么$E_L(H)\leq E_L(G)$并且$V(G)-V(H)$也是一个独立的矩阵</p>
+<p>##拉普拉斯中心性</p>
+<ul>
+<li>定义3 如果网络$G=(V,E,W)$拥有n个点$\{v_1,v_2,…,v_n\}$，那么$G_i$就是i节点从网络G删除后所形成的网络，拉普拉斯中心性$C_L(v_i,G)$被定义为</li>
+</ul>
+<blockquote>
+<p>$C_L=(v_i,G)=\frac{(\triangle E)}{E_L(G)}=\frac{E_L(G)-E_L(G_i)}{E_L(G)}$</p>
+</blockquote>
+<p>##拉普拉斯图论<br>假设网络$G=(V,E,W)$拥有n个点$\{v_1,v_2,…,v_n\}$点</p>
+<blockquote>
+<p>定理1:假设网络$G=(V,E,W)$是一个加权网络，v是G中的任意一个点，那么这里有三种类型的2-walks包含v节点</p>
+</blockquote>
+<ol>
+<li>假设v节点是第一个节点，那么2-walk的节点数量$NW_2^C(v)=\sum_{y_i\in N(v)}w_{v,y_i}^2$</li>
+<li>假设v节点是最后一个节点，那么2-walk的节点数量$NW_2^E(v)=\sum_{y_i\in N(v)}(\sum_{z_j\in \{N(y_i)-v\}}w_{v,y_i}w_{y_i,z_j})$</li>
+<li>假设v节点是中间的那个节点，那么2-walk的节点数量$NW_2^M(v)=\sum_{y_i,y_j\in N(v),y_i\not=y_j}w_{y_i,v}w_{v,y_j}$</li>
+</ol>
+<blockquote>
+<p>定理2:网络$G=(V,E,W)$是一个加权网络拥有n个点$\{v_1,v_2,…,v_n\}$点，删除某个节点之后形成的网络H计算能量差值为</p>
+</blockquote>
+<ul>
+<li>$(\triangle E)_i=E_L(G)-E_L(H)$<br>$=4NW_2^C(v_i+2NW_2^E(v_i)+2NW_2^M(v_i)\tag{2.1}$</li>
+</ul>
+<p>以下是证明过程：<br>我们已知$E_L(G)=\sum_{i=1}^nx^2(v_i)+2\sum_{i&lt;j}w_{i,j}^2\tag{2.2}$<br>假设能量守恒不丢失，那么$H=G-v_1$那么$N(v_1)$就是$v_1$节点的邻居节点 权值之和就是，我们可以得出<br>$x’(v_i)=\begin{cases}0,&amp; if\ i=1;\\x(v_i)-w_{v_1,v_i},&amp;if\ v_i\in N(v_1);\\x(v_i),&amp;otherwise.\end{cases}\tag{2.3}$<br>通过定理一和公式2.3可得<br>$E_L(H)=\sum_{v_i\in N(v_1)}(x(v_i)-w_{v_1,v_i})^2+\sum_{v_i\notin N(v_i)}x^2(v_i)+2*\sum_{1&lt;i&lt;j}w_{i,j}^2$</p>
+<p>[1]T. Opsahl, F. Agneessens, J. Skvoretz, Node centrality in weighted networks: generalizing degree and shortest paths, Social Networks 32 (2010) 245– 251.</p>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2016/04/26/拉普拉斯中心性/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
                         <a class="link-unstyled" href="/2016/04/25/节点和链路重要性算法/">
                             节点和链路重要性算法
                         </a>
@@ -187,7 +306,7 @@
                 <div class="postShorten-meta">
     <time itemprop="datePublished" content="Mon Apr 25 2016 10:49:23 GMT+0800">
 	
-		    25 4月 2016
+		    4月 25, 2016
     	
     </time>
     
@@ -234,47 +353,7 @@
                     
                         <p>
                             <a href="/2016/04/25/节点和链路重要性算法/#post-footer" class="postShorten-excerpt_link link">
-                                Commenter et partager
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2016/04/24/hexo使用/">
-                            hexo使用
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" content="Sun Apr 24 2016 12:58:23 GMT+0800">
-	
-		    24 4月 2016
-    	
-    </time>
-    
-</div>
-            </div>
-            
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2016/04/24/hexo使用/#post-footer" class="postShorten-excerpt_link link">
-                                Commenter et partager
+                                Comment and share
                             </a>
                         </p>
                     
@@ -298,7 +377,7 @@
                 <div class="postShorten-meta">
     <time itemprop="datePublished" content="Sun Apr 24 2016 12:58:23 GMT+0800">
 	
-		    24 4月 2016
+		    4月 24, 2016
     	
     </time>
     
@@ -358,7 +437,7 @@
                     
                         <p>
                             <a href="/2016/04/24/多重网络的特征向量中心性/#post-footer" class="postShorten-excerpt_link link">
-                                Commenter et partager
+                                Comment and share
                             </a>
                         </p>
                     
@@ -372,7 +451,7 @@
     <ul class="pagination">
         
         
-        <li class="pagination-number">page sur</li>
+        <li class="pagination-number">page 1 of 1</li>
     </ul>
 </div>
 
@@ -411,6 +490,12 @@
 
             </h5>
         
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                浙江工业大学屏峰校区
+            </h5>
         
     </div>
 </div>
