@@ -5,12 +5,12 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-26T12:16:33.000Z</updated>
+  <updated>2016-05-01T12:00:55.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
     <name>zjutK</name>
-    
+    <email>569726429@qq.com</email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
@@ -20,12 +20,13 @@
     <link href="http://yoursite.com/2016/04/26/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E4%B8%AD%E5%BF%83%E6%80%A7/"/>
     <id>http://yoursite.com/2016/04/26/拉普拉斯中心性/</id>
     <published>2016-04-26T12:16:04.000Z</published>
-    <updated>2016-04-26T12:16:33.000Z</updated>
+    <updated>2016-05-01T12:00:55.000Z</updated>
     
-    <content type="html">&lt;p&gt;##简介&lt;br&gt;加权网络的三种度量方法包括，度数中心性，接近中心性，介数中心性。本文提出一种叫做拉普拉斯的矩阵方法来度量中心性，&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;加权网络的三种度量方法包括，度数中心性，接近中心性，介数中心性。本文提出一种叫做拉普拉斯的矩阵方法来度量中心性，&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$E_L(G)=\sum_{i}\lambda^2_i$&lt;br&gt;$\lambda_i$是权重网络G拉普拉斯矩阵的特征值&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;在加权网络中，点可以表示个体，组织亦或是城市，边可以表示成联系，贸易，合作，友谊等等&lt;/p&gt;
 &lt;p&gt;无权网络的已经知道的比较出名的度量中心性的标准主要有&lt;/p&gt;
 &lt;ul&gt;
@@ -40,7 +41,7 @@
 &lt;p&gt;The simplicity of degree method is an advantage and also is an dis- advantage: only the local structure around a vertex is calculated and it does not take into consideration the global structure of the network; for example, although a vertex might be connected to many others, it might not be in a position to reach others quickly to access resources, such as information or knowledge&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;拉普拉斯中心性能够很好的解决上述的问题，首先拉普拉斯中心性类似特征向量中心性考虑节点的中心性不仅涉及近邻的重要性还涉及其近邻所相连的网络。&lt;/p&gt;
-&lt;p&gt;##拉普拉斯算法&lt;br&gt;考虑加权网络$G=(V,E,W)$,$V(G)=\{v1，v2，v3…\}$这是点的集合，$e=(vi,vj)$ 每条边的权重可以设置为$w_{i,j}$，如果点和点之间没有连接那么$w_{i,j}=0$&lt;br&gt;可以定义&lt;/p&gt;
+&lt;h3 id=&quot;拉普拉斯算法&quot;&gt;&lt;a href=&quot;#拉普拉斯算法&quot; class=&quot;headerlink&quot; title=&quot;拉普拉斯算法&quot;&gt;&lt;/a&gt;拉普拉斯算法&lt;/h3&gt;&lt;p&gt;考虑加权网络$G=(V,E,W)$,$V(G)=\{v1，v2，v3…\}$这是点的集合，$e=(vi,vj)$ 每条边的权重可以设置为$w_{i,j}$，如果点和点之间没有连接那么$w_{i,j}=0$&lt;br&gt;可以定义&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$W(G)=\left\{&lt;br&gt; \begin{matrix}&lt;br&gt;   0 &amp;amp; w_{1,2} &amp;amp;\dots &amp;amp; w_{1,n} \\&lt;br&gt;   w_{2,1} &amp;amp; 0 &amp;amp; \dots &amp;amp; w_{2,n} \\&lt;br&gt;   . &amp;amp; . &amp;amp; . &amp;amp; . \\&lt;br&gt;   w_{n,1} &amp;amp; w_{n,2} &amp;amp; \dots &amp;amp; 0&lt;br&gt;  \end{matrix}&lt;br&gt;  \right\} \tag{1}$&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -77,14 +78,13 @@
 &lt;p&gt;$E_L(G)=\sum_{i=1}^n\lambda_i^2=(\sum_{i=1}^n\lambda_i)^2-\sum_{i\not=j}\lambda_i\lambda_j$&lt;br&gt;$=(\sum_{i=1}^nx_i)^2-\sum_{i\not=j}x_ix_j+\sum_{i\not=j}w_{i,j}^2$&lt;br&gt;$=\sum_{i=1}^2x_i^2+\sum_{i\not=j}w_{i,j}^2$&lt;br&gt;$=\sum_{i=1}^nx_i^2+2\sum_{i&amp;lt;j}w_{i,j}^2$&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;必然结果&lt;/strong&gt;:如果H是G的一个子图，那么$E_L(H)\leq E_L(G)$并且$V(G)-V(H)$也是一个独立的矩阵&lt;/p&gt;
-&lt;p&gt;##拉普拉斯中心性&lt;/p&gt;
-&lt;ul&gt;
+&lt;h3 id=&quot;拉普拉斯中心性&quot;&gt;&lt;a href=&quot;#拉普拉斯中心性&quot; class=&quot;headerlink&quot; title=&quot;拉普拉斯中心性&quot;&gt;&lt;/a&gt;拉普拉斯中心性&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;定义3 如果网络$G=(V,E,W)$拥有n个点$\{v_1,v_2,…,v_n\}$，那么$G_i$就是i节点从网络G删除后所形成的网络，拉普拉斯中心性$C_L(v_i,G)$被定义为&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$C_L=(v_i,G)=\frac{(\triangle E)}{E_L(G)}=\frac{E_L(G)-E_L(G_i)}{E_L(G)}$&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;##拉普拉斯图论&lt;br&gt;假设网络$G=(V,E,W)$拥有n个点$\{v_1,v_2,…,v_n\}$点&lt;/p&gt;
+&lt;h3 id=&quot;拉普拉斯图论&quot;&gt;&lt;a href=&quot;#拉普拉斯图论&quot; class=&quot;headerlink&quot; title=&quot;拉普拉斯图论&quot;&gt;&lt;/a&gt;拉普拉斯图论&lt;/h3&gt;&lt;p&gt;假设网络$G=(V,E,W)$拥有n个点$\{v_1,v_2,…,v_n\}$点&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;定理1:假设网络$G=(V,E,W)$是一个加权网络，v是G中的任意一个点，那么这里有三种类型的2-walks包含v节点&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -105,12 +105,17 @@
     
     <summary type="html">
     
-      &lt;p&gt;##简介&lt;br&gt;加权网络的三种度量方法包括，度数中心性，接近中心性，介数中心性。本文提出一种叫做拉普拉斯的矩阵方法来度量中心性，&lt;/p&gt;
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;加权网络的三种度量方法包括，度数中心性，接近中心性，介数中心性。本文提出一种叫做拉普拉斯的矩阵方法来度量中心性，&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;$E_L(G)=\sum_{i}\lambda^2_i$&lt;br&gt;$\lambda_i$是权重网络G拉普拉
+&lt;p&gt;$E_L(G)=\sum_{i}\lambda^2_i$&lt;br&gt;$\lambda_i$是权重网络G拉普拉斯矩阵的特征值&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
+      <category term="复杂网络" scheme="http://yoursite.com/categories/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -119,14 +124,14 @@
     <link href="http://yoursite.com/2016/04/25/%E8%8A%82%E7%82%B9%E5%92%8C%E9%93%BE%E8%B7%AF%E9%87%8D%E8%A6%81%E6%80%A7%E7%AE%97%E6%B3%95/"/>
     <id>http://yoursite.com/2016/04/25/节点和链路重要性算法/</id>
     <published>2016-04-25T02:49:23.000Z</published>
-    <updated>2016-04-25T02:49:34.000Z</updated>
+    <updated>2016-05-01T12:00:35.000Z</updated>
     
-    <content type="html">&lt;p&gt;##A new mutually reinforcing network node and link ranking algorithm&lt;/p&gt;
-&lt;blockquote&gt;
+    <content type="html">&lt;h3 id=&quot;A-new-mutually-reinforcing-network-node-and-link-ranking-algorithm&quot;&gt;&lt;a href=&quot;#A-new-mutually-reinforcing-network-node-and-link-ranking-algorithm&quot; class=&quot;headerlink&quot; title=&quot;A new mutually reinforcing network node and link ranking algorithm&quot;&gt;&lt;/a&gt;A new mutually reinforcing network node and link ranking algorithm&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;摘要:提出一张叫做NWRank算法，能够在对节点排名的同时对边进行排名，该算法结合了HITs与PageRank算法&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;p&gt;##算法&lt;br&gt;假设$G(N,M)$表示一个有n个节点的集合N和m条边的集合M所组成，另外假设节点不存在自环。重要节点定义为L的操作，重要边定义为Q的操作如下表示&lt;/p&gt;
+&lt;h3 id=&quot;算法&quot;&gt;&lt;a href=&quot;#算法&quot; class=&quot;headerlink&quot; title=&quot;算法&quot;&gt;&lt;/a&gt;算法&lt;/h3&gt;&lt;p&gt;假设$G(N,M)$表示一个有n个节点的集合N和m条边的集合M所组成，另外假设节点不存在自环。重要节点定义为L的操作，重要边定义为Q的操作如下表示&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$x=L(y),y=Q(x)\tag{1}$&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -142,13 +147,13 @@
 &lt;p&gt;$i,j,k…\in 节点N a,b,c…\in 边M$ &lt;strong&gt;(W是Z的转置矩阵)&lt;/strong&gt;&lt;br&gt;类似于HITs，x与y在达到下一个状态的时候必须被归一化，从而实现一个迭代过程&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$x(t+1)=Wy(t)=WZx(t)\tag{5}$&lt;br&gt;$y(t+1)=Zx(t+1)=ZWy(T)\tag{6}$&lt;br&gt;x,y最终收敛于WZ,ZW的主要特征向量，或者线性组合。&lt;/p&gt;
-&lt;p&gt;##NWRank 算法&lt;br&gt;新的方法中将Z矩阵替换成如下的h矩阵:&lt;br&gt;$h_{bj}=\begin{cases}\alpha \frac{k_b}{\sum_qk_a}+(1-\alpha)\frac{BC_b}{\sum_qBC_a}\\0&amp;amp;otherwise\end{cases}\tag{7}$&lt;/p&gt;
+&lt;h3 id=&quot;NWRank-算法&quot;&gt;&lt;a href=&quot;#NWRank-算法&quot; class=&quot;headerlink&quot; title=&quot;NWRank 算法&quot;&gt;&lt;/a&gt;NWRank 算法&lt;/h3&gt;&lt;p&gt;新的方法中将Z矩阵替换成如下的h矩阵:&lt;br&gt;$h_{bj}=\begin{cases}\alpha \frac{k_b}{\sum_qk_a}+(1-\alpha)\frac{BC_b}{\sum_qBC_a}\\0&amp;amp;otherwise\end{cases}\tag{7}$&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;$h_{bj}$是从节点j到边b的分数分布，q是连接点节点j的边的数量，$k_b,k_a$是节点b和节点a的度数，$BC_b,BC_a$代表边b，a介数中心性的等级，$\alpha$代表权重系数，因此W矩阵可以被修改，&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$x(t+1)=Wy(t)=WHx(t)\tag{8}$&lt;br&gt;$y(t+1)=Hx(t+1)=HWy(t)\tag{9}$&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;##应用到网络&lt;br&gt;N是节点的数量，$d_{ij}$代表i与j的最短路径网络效率作为衡量网络的性能指标E&lt;/p&gt;
+&lt;h3 id=&quot;应用到网络&quot;&gt;&lt;a href=&quot;#应用到网络&quot; class=&quot;headerlink&quot; title=&quot;应用到网络&quot;&gt;&lt;/a&gt;应用到网络&lt;/h3&gt;&lt;p&gt;N是节点的数量，$d_{ij}$代表i与j的最短路径网络效率作为衡量网络的性能指标E&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$E=\frac{1}{N(N-1)}\sum_{i\not= j}\frac{1}{d_{ij}}\tag{10}$&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -156,14 +161,16 @@
     
     <summary type="html">
     
-      &lt;p&gt;##A new mutually reinforcing network node and link ranking algorithm&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;摘要:提出一张叫做NWRank算法，能够在对节点排名的同时对边进行排名，该算法结合了HITs与P
+      &lt;h3 id=&quot;A-new-mutually-reinforcing-network-node-and-link-ranking-algorithm&quot;&gt;&lt;a href=&quot;#A-new-mutually-reinforcing-network-node-and-link-ranking-algorithm&quot; class=&quot;headerlink&quot; title=&quot;A new mutually reinforcing network node and link ranking algorithm&quot;&gt;&lt;/a&gt;A new mutually reinforcing network node and link ranking algorithm&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;摘要:提出一张叫做NWRank算法，能够在对节点排名的同时对边进行排名，该算法结合了HITs与PageRank算法&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
+      <category term="复杂网络" scheme="http://yoursite.com/categories/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="复杂网络" scheme="http://yoursite.com/tags/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -172,14 +179,14 @@
     <link href="http://yoursite.com/2016/04/24/%E5%A4%9A%E9%87%8D%E7%BD%91%E7%BB%9C%E7%9A%84%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E4%B8%AD%E5%BF%83%E6%80%A7/"/>
     <id>http://yoursite.com/2016/04/24/多重网络的特征向量中心性/</id>
     <published>2016-04-24T04:58:23.000Z</published>
-    <updated>2016-04-26T12:19:52.000Z</updated>
+    <updated>2016-05-01T11:59:15.000Z</updated>
     
-    <content type="html">&lt;p&gt;###Eigenvector centrality of nodes in multiplex networks&lt;/p&gt;
-&lt;blockquote&gt;
+    <content type="html">&lt;h3 id=&quot;Eigenvector-centrality-of-nodes-in-multiplex-networks&quot;&gt;&lt;a href=&quot;#Eigenvector-centrality-of-nodes-in-multiplex-networks&quot; class=&quot;headerlink&quot; title=&quot;Eigenvector centrality of nodes in multiplex networks&quot;&gt;&lt;/a&gt;Eigenvector centrality of nodes in multiplex networks&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地位的措施之间的关系。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;许多生物，社会，和技术系统可以找到合适的复杂网络来表示，其中节点表示为系统的成分，而边代表他们之间的相互作用，在一般情况下，该节点的相互作用需要一个更精确的映射作为一个系统的组成&lt;strong&gt;(通常同时以多种方式连接)&lt;/strong&gt;不是简单链路。举例来说，在社交网络中，可以考虑几种不同演员的关系：友谊，附近，亲属关系，相同的文化社会的成员关系，合作伙伴关系，或同事关系等。在这种情况下，赋予多重网络结构关系是非常有用的。这种表示反映了节点通过多个层的联系，这不能由传统单层网络表示被捕获的相互作用。这种多重代表制一直被认为是由社会学家，虽然有些成果涉及多重网络建模和结构近来已经提出，在这样的网络核心参数的研究还没有得到解决令人满意。本文的目的是提出多重网络的核心定义在和应用潜力。&lt;/p&gt;
-&lt;p&gt;###注释&lt;br&gt;在本文中，我们考虑多重网络$G$,主要由$m\in N$层网络$G1,…,G_M$每一层网络都是无向网路，即$G_k=(X,E_k)$,而$X=\{e_1,…e_n\}$(每一层的网络都有相同的节点数)。每一层邻接矩阵的转置$G_k$由$A_k=(a_{ij}^k)\in R^{n*n}$所构成：&lt;/p&gt;
+&lt;h3 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h3&gt;&lt;p&gt;在本文中，我们考虑多重网络$G$,主要由$m\in N$层网络$G1,…,G_M$每一层网络都是无向网路，即$G_k=(X,E_k)$,而$X=\{e_1,…e_n\}$(每一层的网络都有相同的节点数)。每一层邻接矩阵的转置$G_k$由$A_k=(a_{ij}^k)\in R^{n*n}$所构成：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$a_{ij}^k=\begin{cases}1&amp;amp;if (e_j,e_i)\in E_k\\0&amp;amp;otherwise \end{cases}$&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -197,7 +204,7 @@
 &lt;li&gt;致力于建立合理的条件下，措施的合理性和一致性&lt;/li&gt;
 &lt;li&gt;报告了一些计算机实验和模拟显示当这些参数应用到相同的复用网络时，如何采取措施，提供不同的结果&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;###连接多重网络时特征向量中心性指标的数字模型&lt;br&gt;在多重网络的情况下，要解决的核心问题是：如何才能兼顾不同子网之间的所有互动（渠道，社区，层）并非所有的人都具有同样的重要性？为了获得一个节点的中心，有必要考虑中心节点（重要性，影响）通过不同的信道（层传播在整个网络中）。例如，全球社交网络（如Facebook或Twitter）的特点是非常庞杂，这也是典型的互动单元之间的领域广泛，包括气候系统，博弈论，交互基础设施，等等。&lt;br&gt;参照网络G，对于每个层，可以考虑$G_k$的经典特征向量中心作为主特征向量（如果存在）。具体而言，该层$G_k$中的一个节点$e_i$的特征向量中心将是正定和规范化向量$c_k\in R^n$相当于矩阵的最大特征值的第i个条目。以类似的方式，投影的网络$\overline G$的特征向量中心将是$\overline A$的主本征向量。这些载体的存在和唯一的Perron-Frobenius定理任何对称矩阵正元素的保证。&lt;br&gt;有趣的是，Perron-Frobenius定理可方便地扩展到多路网络，导致节点的中心位置更深的概念。我们注意到的Perron-Frobenius定理的其他扩展已亲合影超图和非负张量。&lt;br&gt;一旦所有的特征向量中心性计算，可以考虑的G独立层特征向量中心性（简称为G的独立层核心）为基体，类似于矩阵&lt;/p&gt;
+&lt;h3 id=&quot;连接多重网络时特征向量中心性指标的数字模型&quot;&gt;&lt;a href=&quot;#连接多重网络时特征向量中心性指标的数字模型&quot; class=&quot;headerlink&quot; title=&quot;连接多重网络时特征向量中心性指标的数字模型&quot;&gt;&lt;/a&gt;连接多重网络时特征向量中心性指标的数字模型&lt;/h3&gt;&lt;p&gt;在多重网络的情况下，要解决的核心问题是：如何才能兼顾不同子网之间的所有互动（渠道，社区，层）并非所有的人都具有同样的重要性？为了获得一个节点的中心，有必要考虑中心节点（重要性，影响）通过不同的信道（层传播在整个网络中）。例如，全球社交网络（如Facebook或Twitter）的特点是非常庞杂，这也是典型的互动单元之间的领域广泛，包括气候系统，博弈论，交互基础设施，等等。&lt;br&gt;参照网络G，对于每个层，可以考虑$G_k$的经典特征向量中心作为主特征向量（如果存在）。具体而言，该层$G_k$中的一个节点$e_i$的特征向量中心将是正定和规范化向量$c_k\in R^n$相当于矩阵的最大特征值的第i个条目。以类似的方式，投影的网络$\overline G$的特征向量中心将是$\overline A$的主本征向量。这些载体的存在和唯一的Perron-Frobenius定理任何对称矩阵正元素的保证。&lt;br&gt;有趣的是，Perron-Frobenius定理可方便地扩展到多路网络，导致节点的中心位置更深的概念。我们注意到的Perron-Frobenius定理的其他扩展已亲合影超图和非负张量。&lt;br&gt;一旦所有的特征向量中心性计算，可以考虑的G独立层特征向量中心性（简称为G的独立层核心）为基体，类似于矩阵&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$C=(c_1|c_2|…|c_m)\in R^{n*m}$&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -222,14 +229,14 @@
     
     <summary type="html">
     
-      &lt;p&gt;###Eigenvector centrality of nodes in multiplex networks&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，
+      &lt;h3 id=&quot;Eigenvector-centrality-of-nodes-in-multiplex-networks&quot;&gt;&lt;a href=&quot;#Eigenvector-centrality-of-nodes-in-multiplex-networks&quot; class=&quot;headerlink&quot; title=&quot;Eigenvector centrality of nodes in multiplex networks&quot;&gt;&lt;/a&gt;Eigenvector centrality of nodes in multiplex networks&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地位的措施之间的关系。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
+      <category term="复杂网络" scheme="http://yoursite.com/categories/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="复杂网络" scheme="http://yoursite.com/tags/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/"/>
     
       <category term="多重网络" scheme="http://yoursite.com/tags/%E5%A4%9A%E9%87%8D%E7%BD%91%E7%BB%9C/"/>
     

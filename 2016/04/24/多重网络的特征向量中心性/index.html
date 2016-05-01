@@ -13,22 +13,19 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="###Eigenvector centrality of nodes in multiplex networks
-
-摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地">
+    <meta name="description" content="Eigenvector centrality of nodes in multiplex networks
+摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地位的措施">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="多重网络的特征向量中心性">
 <meta property="og:url" content="http://yoursite.com/2016/04/24/多重网络的特征向量中心性/index.html">
 <meta property="og:site_name" content="zjutK's Blog">
-<meta property="og:description" content="###Eigenvector centrality of nodes in multiplex networks
-
-摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地">
-<meta property="og:updated_time" content="2016-04-26T12:19:52.000Z">
+<meta property="og:description" content="Eigenvector centrality of nodes in multiplex networks
+摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地位的措施">
+<meta property="og:updated_time" content="2016-05-01T11:59:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多重网络的特征向量中心性">
-<meta name="twitter:description" content="###Eigenvector centrality of nodes in multiplex networks
-
-摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地">
+<meta name="twitter:description" content="Eigenvector centrality of nodes in multiplex networks
+摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地位的措施">
     
     
         
@@ -192,17 +189,23 @@
     	
     </time>
     
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/复杂网络/">复杂网络</a>
+
+
+    
 </div>
 </div>
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>###Eigenvector centrality of nodes in multiplex networks</p>
-<blockquote>
+            <h3 id="Eigenvector-centrality-of-nodes-in-multiplex-networks"><a href="#Eigenvector-centrality-of-nodes-in-multiplex-networks" class="headerlink" title="Eigenvector centrality of nodes in multiplex networks"></a>Eigenvector centrality of nodes in multiplex networks</h3><blockquote>
 <p>摘要:拓展了特征向量中心性在多重网络之中的应用，还介绍了几种多重网络中量化节点重要性的参数，包括矢量类型的中心性。另外，我们严格表明在合理的条件之下，这种核心措施仍然存在并且是独一无二的，计算机的实验和仿真表明，该措施时应用到相同的复合结构提供很不一样的结果，突出介绍非凡不同的中心地位的措施之间的关系。</p>
 </blockquote>
+<a id="more"></a>
 <p>许多生物，社会，和技术系统可以找到合适的复杂网络来表示，其中节点表示为系统的成分，而边代表他们之间的相互作用，在一般情况下，该节点的相互作用需要一个更精确的映射作为一个系统的组成<strong>(通常同时以多种方式连接)</strong>不是简单链路。举例来说，在社交网络中，可以考虑几种不同演员的关系：友谊，附近，亲属关系，相同的文化社会的成员关系，合作伙伴关系，或同事关系等。在这种情况下，赋予多重网络结构关系是非常有用的。这种表示反映了节点通过多个层的联系，这不能由传统单层网络表示被捕获的相互作用。这种多重代表制一直被认为是由社会学家，虽然有些成果涉及多重网络建模和结构近来已经提出，在这样的网络核心参数的研究还没有得到解决令人满意。本文的目的是提出多重网络的核心定义在和应用潜力。</p>
-<p>###注释<br>在本文中，我们考虑多重网络$G$,主要由$m\in N$层网络$G1,…,G_M$每一层网络都是无向网路，即$G_k=(X,E_k)$,而$X=\{e_1,…e_n\}$(每一层的网络都有相同的节点数)。每一层邻接矩阵的转置$G_k$由$A_k=(a_{ij}^k)\in R^{n*n}$所构成：</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>在本文中，我们考虑多重网络$G$,主要由$m\in N$层网络$G1,…,G_M$每一层网络都是无向网路，即$G_k=(X,E_k)$,而$X=\{e_1,…e_n\}$(每一层的网络都有相同的节点数)。每一层邻接矩阵的转置$G_k$由$A_k=(a_{ij}^k)\in R^{n*n}$所构成：</p>
 <blockquote>
 <p>$a_{ij}^k=\begin{cases}1&amp;if (e_j,e_i)\in E_k\\0&amp;otherwise \end{cases}$</p>
 </blockquote>
@@ -220,7 +223,7 @@
 <li>致力于建立合理的条件下，措施的合理性和一致性</li>
 <li>报告了一些计算机实验和模拟显示当这些参数应用到相同的复用网络时，如何采取措施，提供不同的结果</li>
 </ol>
-<p>###连接多重网络时特征向量中心性指标的数字模型<br>在多重网络的情况下，要解决的核心问题是：如何才能兼顾不同子网之间的所有互动（渠道，社区，层）并非所有的人都具有同样的重要性？为了获得一个节点的中心，有必要考虑中心节点（重要性，影响）通过不同的信道（层传播在整个网络中）。例如，全球社交网络（如Facebook或Twitter）的特点是非常庞杂，这也是典型的互动单元之间的领域广泛，包括气候系统，博弈论，交互基础设施，等等。<br>参照网络G，对于每个层，可以考虑$G_k$的经典特征向量中心作为主特征向量（如果存在）。具体而言，该层$G_k$中的一个节点$e_i$的特征向量中心将是正定和规范化向量$c_k\in R^n$相当于矩阵的最大特征值的第i个条目。以类似的方式，投影的网络$\overline G$的特征向量中心将是$\overline A$的主本征向量。这些载体的存在和唯一的Perron-Frobenius定理任何对称矩阵正元素的保证。<br>有趣的是，Perron-Frobenius定理可方便地扩展到多路网络，导致节点的中心位置更深的概念。我们注意到的Perron-Frobenius定理的其他扩展已亲合影超图和非负张量。<br>一旦所有的特征向量中心性计算，可以考虑的G独立层特征向量中心性（简称为G的独立层核心）为基体，类似于矩阵</p>
+<h3 id="连接多重网络时特征向量中心性指标的数字模型"><a href="#连接多重网络时特征向量中心性指标的数字模型" class="headerlink" title="连接多重网络时特征向量中心性指标的数字模型"></a>连接多重网络时特征向量中心性指标的数字模型</h3><p>在多重网络的情况下，要解决的核心问题是：如何才能兼顾不同子网之间的所有互动（渠道，社区，层）并非所有的人都具有同样的重要性？为了获得一个节点的中心，有必要考虑中心节点（重要性，影响）通过不同的信道（层传播在整个网络中）。例如，全球社交网络（如Facebook或Twitter）的特点是非常庞杂，这也是典型的互动单元之间的领域广泛，包括气候系统，博弈论，交互基础设施，等等。<br>参照网络G，对于每个层，可以考虑$G_k$的经典特征向量中心作为主特征向量（如果存在）。具体而言，该层$G_k$中的一个节点$e_i$的特征向量中心将是正定和规范化向量$c_k\in R^n$相当于矩阵的最大特征值的第i个条目。以类似的方式，投影的网络$\overline G$的特征向量中心将是$\overline A$的主本征向量。这些载体的存在和唯一的Perron-Frobenius定理任何对称矩阵正元素的保证。<br>有趣的是，Perron-Frobenius定理可方便地扩展到多路网络，导致节点的中心位置更深的概念。我们注意到的Perron-Frobenius定理的其他扩展已亲合影超图和非负张量。<br>一旦所有的特征向量中心性计算，可以考虑的G独立层特征向量中心性（简称为G的独立层核心）为基体，类似于矩阵</p>
 <blockquote>
 <p>$C=(c_1|c_2|…|c_m)\in R^{n*m}$</p>
 </blockquote>
@@ -250,7 +253,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/复杂网络/">复杂网络</a> <a class="tag tag--primary tag--small t-link" href="/tags/多重网络/">多重网络</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/多重网络/">多重网络</a>
 
             </div>
         
