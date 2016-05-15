@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-15T14:23:45.000Z</updated>
+  <updated>2016-05-15T14:25:34.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,17 +20,17 @@
     <link href="http://yoursite.com/2016/05/15/Synchronization%20of%20Interconnected%20Networks-%20The%20Role%20of%20Connector%20Nodes/"/>
     <id>http://yoursite.com/2016/05/15/Synchronization of Interconnected Networks- The Role of Connector Nodes/</id>
     <published>2016-05-15T14:15:30.000Z</published>
-    <updated>2016-05-15T14:23:45.000Z</updated>
+    <updated>2016-05-15T14:25:34.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍互联网同步性的一般规则，主要通过分析数字化和实验，研究两个网络中的不同度数的节点相互连接影响网络的同步性能。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;研究发现连接两个网络高度数的节点可以更有效率的实现两个网络的同步性。&lt;/li&gt;
 &lt;li&gt;发现了关于网络间同步能力和大小的函数关系，提出了最佳的互连策略&lt;/li&gt;
-&lt;li&gt;通过电子实验实现了耦合两个星形网络，结果证明噪声和参数的关系确实存在&lt;/li&gt;
+&lt;li&gt;通过电子实验实现了耦合两个星形网络，结果证明噪声和参数的关系确实存在&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;不同的网络之间总是存在或者参杂着相互影响的因子，参考相互依存网络–networks of networks(NON),我们通过新的网络视角&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;健壮性(鲁棒性)&lt;/li&gt;
@@ -75,7 +75,11 @@
     <summary type="html">
     
       &lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;本文主要介绍互联网同步性的一般规则，主要通过分析数字化和实验，研究两个网络中的不同度数的节点相互连接影响网络的同步
+&lt;p&gt;本文主要介绍互联网同步性的一般规则，主要通过分析数字化和实验，研究两个网络中的不同度数的节点相互连接影响网络的同步性能。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;研究发现连接两个网络高度数的节点可以更有效率的实现两个网络的同步性。&lt;/li&gt;
+&lt;li&gt;发现了关于网络间同步能力和大小的函数关系，提出了最佳的互连策略&lt;/li&gt;
+&lt;li&gt;通过电子实验实现了耦合两个星形网络，结果证明噪声和参数的关系确实存在
     
     </summary>
     
