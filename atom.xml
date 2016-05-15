@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-01T12:00:55.000Z</updated>
+  <updated>2016-05-15T14:23:45.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,77 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Synchronization of Interconnected Networks the Role of Connector Nodes</title>
+    <link href="http://yoursite.com/2016/05/15/Synchronization%20of%20Interconnected%20Networks-%20The%20Role%20of%20Connector%20Nodes/"/>
+    <id>http://yoursite.com/2016/05/15/Synchronization of Interconnected Networks- The Role of Connector Nodes/</id>
+    <published>2016-05-15T14:15:30.000Z</published>
+    <updated>2016-05-15T14:23:45.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;本文主要介绍互联网同步性的一般规则，主要通过分析数字化和实验，研究两个网络中的不同度数的节点相互连接影响网络的同步性能。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;研究发现连接两个网络高度数的节点可以更有效率的实现两个网络的同步性。&lt;/li&gt;
+&lt;li&gt;发现了关于网络间同步能力和大小的函数关系，提出了最佳的互连策略&lt;/li&gt;
+&lt;li&gt;通过电子实验实现了耦合两个星形网络，结果证明噪声和参数的关系确实存在&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;不同的网络之间总是存在或者参杂着相互影响的因子，参考相互依存网络–networks of networks(NON),我们通过新的网络视角&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;健壮性(鲁棒性)&lt;/li&gt;
+&lt;li&gt;扩散性&lt;/li&gt;
+&lt;li&gt;模块间的相互作用&lt;/li&gt;
+&lt;li&gt;同步性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;来研究网络间的相互作用，同样的虽然前人在网络的同步性上做了很多的工作，但是还是缺少在NONs，[1]中提出当两个网络进行交互时，通过随机连接网络中的点和改变网络的内部结构来达到网络之间的精确平衡以达到网络间的同步，同时这篇文章也显示多重网络的作用将会增加网络的同步性。&lt;br&gt;真实网络中的节点会存在非常多的异质性，hubs节点（高度数节点）和peripheral（低度数节点）。如果网络之间通过连接器进行连接而不是随意创建，那么将会发生什么？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[2]分析了低度数节点对整个网络的动力学影响&lt;/li&gt;
+&lt;li&gt;[3]显示当两个神经元集合进行连接，网络的异质性的改变和度数的改变影响整个系统&lt;/li&gt;
+&lt;li&gt;[4]适当选择连接器节点连接对结构的影响(控制和平衡人口)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了测量系统的稳定性，对一组动力学耦合单元给出了相关主稳定函数– master stability function（MSF），给定一个特定的动力学耦合单元，系统的同步性主要取决于$\lambda_2$，又叫做(spectral gap or algebraic)，拉普拉斯矩阵的最大特征值$\lambda_N$。动力系统根据MSF分类成:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;无论结构如何改变都不会同步的系统 &lt;/li&gt;
+&lt;li&gt;当$\lambda_2&amp;gt;阈值$ 系统才会同步&lt;/li&gt;
+&lt;li&gt;当$r=\frac{\lambda_N}{\lambda_2}&amp;lt;阈值$，系统才会同步&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;特征值作为非对称耦合的一个指标在实际应用和理论应用都非常有用，第三类系统获得最大的同步性刚好是$r=\frac{\lambda_N}{\lambda_2}=阈值$的时候，[5]显示当网络的结构和边的权重转化成unidirectional hierarchical organizations(单向分层组织),最小特征比就等于$r=1（\lambda_2&amp;lt;=\lambda_3&amp;lt;=\dots&amp;lt;=\lambda_N）$&lt;/p&gt;
+&lt;p&gt;给定一个固定节点数和固定边数的网络可以通过遗传算法(纠缠算法entangled networks)来减少$r$，特点是&lt;strong&gt;度数高&lt;/strong&gt;，&lt;strong&gt;路径短&lt;/strong&gt;，&lt;strong&gt;介数少&lt;/strong&gt;，这些结果表明，一个好的策略（断开网络中高度数节点和低度数节点的连接）可以提高系统的同步性&lt;/p&gt;
+&lt;p&gt;如何最大化的同步两个依存网络仍然知之甚少，&lt;img src=&quot;&quot; alt=&quot;figure1.a&quot;&gt;显示了两个网络不同的连接策略，&lt;img src=&quot;&quot; alt=&quot;figure1.b&quot;&gt;描述了两个无标度网络的同步error $\varepsilon(t)$[5],当isolated的时候$\varepsilon(t)$显示为高度数，当策略为LL，t=200时$\varepsilon(t)$开始减少，当在t=400，策略为HH时$\varepsilon(t)$趋于0显示系统完全同步。&lt;/p&gt;
+&lt;p&gt;同步的规则可以通过特征值$\lambda_2$和特征比$r$来量化，由图发现以下特征:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;img src=&quot;&quot; alt=&quot;figure1.c&quot;&gt;显示有$\lambda_2$的区域围绕HH连接，LL围绕$\lambda_2$低的区域，第二类系统最优策略则是通过连接高度数节点&lt;/li&gt;
+&lt;li&gt;&lt;img src=&quot;&quot; alt=&quot;figure1.d&quot;&gt;表明HH连接是最好的选择可以相互依存网络间的耦合能够减少特征比$r$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;仿真实验&quot;&gt;&lt;a href=&quot;#仿真实验&quot; class=&quot;headerlink&quot; title=&quot;仿真实验&quot;&gt;&lt;/a&gt;仿真实验&lt;/h2&gt;&lt;p&gt;思路:建立两个星形网络，每个网络都有一个高度数节点和N个每条边的权重可以设为$w_{intra}$,低度数节点，那么两个网络之间的连接就有HH连接，HL连接，和LL连接。然后我们连接两个星形网络通过权值为$w_{inter}$可以得到$w_{inter}=w_{intra}$,完全同步取决于&lt;strong&gt;加权拉普拉斯矩阵&lt;/strong&gt;，这种网络可以减少拉普拉斯矩阵的特征多项式，以至于$\lambda_N,\lambda_2$可以与HH,HL,LL想联系，对于所有的N和a，最大和最小特征根可以表示为&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$x^3+C_2x^2+C_1x+C_0=0\tag{1}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可得$C_2=-(1+N+2a),C_1=N+4a+\varepsilon a(N-2),C_0=-2a,\varepsilon$主要依赖于连接策略，$\varepsilon^{HH}=0,\varepsilon^{HL}=1,\varepsilon^{LL}=2$假设没有任何能量的损失，那么$w_{intra}=1,w_{inter}=a$，那么HH连接特征值可以表示为&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$\lambda_{N,2}=N/2+a\pm\sqrt{(N/2)^2+a^2+(N-2)a}\tag{2}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;HL与LL表示为更加复杂的形式,对于第二类系统，连接两个网络的a能够增加$\lambda_2$的值，（减少网络的积木性modularity），$N&amp;gt;2,a&amp;gt;0$通过LL,HL策略可得$\lambda_2^{HH}&amp;gt;\lambda_2^{HL}&amp;gt;\lambda_2^{LL}$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以第二类系统的最优策略是连接高度数的节点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于第三类系统，$r^{HH}&amp;lt;r^{HL}&amp;lt;r^{LL}$&lt;/p&gt;
+&lt;p&gt;[1]L. Huang, K. Park, Y.-C. Lai, L. Yang, and K. Yang, Phys. Rev. Lett. 97, 164101 (2006).&lt;br&gt;[2] N. Carlson, D.-H. Kim, and A. E. Motter, Chaos 21, 025105&lt;br&gt;(2011).&lt;br&gt;[3] S.-J. Wang, X.-J. Xu, Z.-X. Wu, and Y.-H. Wang, Phys. Rev.&lt;br&gt;E 74, 041915 (2006).&lt;br&gt;[4] J. Aguirre, D. Papo, and J. M. Buldú, Nat. Phys. 9, 230 (2013).&lt;br&gt;[5] O. E. Rössler, Phys. Lett. 57A, 397 (1976).&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;本文主要介绍互联网同步性的一般规则，主要通过分析数字化和实验，研究两个网络中的不同度数的节点相互连接影响网络的同步
+    
+    </summary>
+    
+      <category term="复杂网络" scheme="http://yoursite.com/categories/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="多重网络" scheme="http://yoursite.com/tags/%E5%A4%9A%E9%87%8D%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>拉普拉斯中心性</title>

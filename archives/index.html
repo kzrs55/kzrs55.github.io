@@ -174,6 +174,100 @@
 <section class="postShorten-group main-content-wrap">
     
     
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2016/05/15/Synchronization of Interconnected Networks- The Role of Connector Nodes/">
+                            Synchronization of Interconnected Networks the Role of Connector Nodes
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Sun May 15 2016 22:15:30 GMT+0800">
+	
+		    5月 15, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/复杂网络/">复杂网络</a>
+
+
+    
+</div>
+            </div>
+            
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><blockquote>
+<p>本文主要介绍互联网同步性的一般规则，主要通过分析数字化和实验，研究两个网络中的不同度数的节点相互连接影响网络的同步性能。</p>
+<ul>
+<li>研究发现连接两个网络高度数的节点可以更有效率的实现两个网络的同步性。</li>
+<li>发现了关于网络间同步能力和大小的函数关系，提出了最佳的互连策略</li>
+<li>通过电子实验实现了耦合两个星形网络，结果证明噪声和参数的关系确实存在</li>
+</ul>
+</blockquote>
+<p>[TOC]</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>不同的网络之间总是存在或者参杂着相互影响的因子，参考相互依存网络–networks of networks(NON),我们通过新的网络视角</p>
+<ul>
+<li>健壮性(鲁棒性)</li>
+<li>扩散性</li>
+<li>模块间的相互作用</li>
+<li>同步性</li>
+</ul>
+<p>来研究网络间的相互作用，同样的虽然前人在网络的同步性上做了很多的工作，但是还是缺少在NONs，[1]中提出当两个网络进行交互时，通过随机连接网络中的点和改变网络的内部结构来达到网络之间的精确平衡以达到网络间的同步，同时这篇文章也显示多重网络的作用将会增加网络的同步性。<br>真实网络中的节点会存在非常多的异质性，hubs节点（高度数节点）和peripheral（低度数节点）。如果网络之间通过连接器进行连接而不是随意创建，那么将会发生什么？</p>
+<ul>
+<li>[2]分析了低度数节点对整个网络的动力学影响</li>
+<li>[3]显示当两个神经元集合进行连接，网络的异质性的改变和度数的改变影响整个系统</li>
+<li>[4]适当选择连接器节点连接对结构的影响(控制和平衡人口)</li>
+</ul>
+<p>为了测量系统的稳定性，对一组动力学耦合单元给出了相关主稳定函数– master stability function（MSF），给定一个特定的动力学耦合单元，系统的同步性主要取决于$\lambda_2$，又叫做(spectral gap or algebraic)，拉普拉斯矩阵的最大特征值$\lambda_N$。动力系统根据MSF分类成:</p>
+<ol>
+<li>无论结构如何改变都不会同步的系统 </li>
+<li>当$\lambda_2&gt;阈值$ 系统才会同步</li>
+<li>当$r=\frac{\lambda_N}{\lambda_2}&lt;阈值$，系统才会同步</li>
+</ol>
+<p>特征值作为非对称耦合的一个指标在实际应用和理论应用都非常有用，第三类系统获得最大的同步性刚好是$r=\frac{\lambda_N}{\lambda_2}=阈值$的时候，[5]显示当网络的结构和边的权重转化成unidirectional hierarchical organizations(单向分层组织),最小特征比就等于$r=1（\lambda_2&lt;=\lambda_3&lt;=\dots&lt;=\lambda_N）$</p>
+<p>给定一个固定节点数和固定边数的网络可以通过遗传算法(纠缠算法entangled networks)来减少$r$，特点是<strong>度数高</strong>，<strong>路径短</strong>，<strong>介数少</strong>，这些结果表明，一个好的策略（断开网络中高度数节点和低度数节点的连接）可以提高系统的同步性</p>
+<p>如何最大化的同步两个依存网络仍然知之甚少，<img src="" alt="figure1.a">显示了两个网络不同的连接策略，<img src="" alt="figure1.b">描述了两个无标度网络的同步error $\varepsilon(t)$[5],当isolated的时候$\varepsilon(t)$显示为高度数，当策略为LL，t=200时$\varepsilon(t)$开始减少，当在t=400，策略为HH时$\varepsilon(t)$趋于0显示系统完全同步。</p>
+<p>同步的规则可以通过特征值$\lambda_2$和特征比$r$来量化，由图发现以下特征:</p>
+<ol>
+<li><img src="" alt="figure1.c">显示有$\lambda_2$的区域围绕HH连接，LL围绕$\lambda_2$低的区域，第二类系统最优策略则是通过连接高度数节点</li>
+<li><img src="" alt="figure1.d">表明HH连接是最好的选择可以相互依存网络间的耦合能够减少特征比$r$</li>
+</ol>
+<h2 id="仿真实验"><a href="#仿真实验" class="headerlink" title="仿真实验"></a>仿真实验</h2><p>思路:建立两个星形网络，每个网络都有一个高度数节点和N个每条边的权重可以设为$w_{intra}$,低度数节点，那么两个网络之间的连接就有HH连接，HL连接，和LL连接。然后我们连接两个星形网络通过权值为$w_{inter}$可以得到$w_{inter}=w_{intra}$,完全同步取决于<strong>加权拉普拉斯矩阵</strong>，这种网络可以减少拉普拉斯矩阵的特征多项式，以至于$\lambda_N,\lambda_2$可以与HH,HL,LL想联系，对于所有的N和a，最大和最小特征根可以表示为</p>
+<blockquote>
+<p>$x^3+C_2x^2+C_1x+C_0=0\tag{1}$</p>
+</blockquote>
+<p>可得$C_2=-(1+N+2a),C_1=N+4a+\varepsilon a(N-2),C_0=-2a,\varepsilon$主要依赖于连接策略，$\varepsilon^{HH}=0,\varepsilon^{HL}=1,\varepsilon^{LL}=2$假设没有任何能量的损失，那么$w_{intra}=1,w_{inter}=a$，那么HH连接特征值可以表示为</p>
+<blockquote>
+<p>$\lambda_{N,2}=N/2+a\pm\sqrt{(N/2)^2+a^2+(N-2)a}\tag{2}$</p>
+</blockquote>
+<p>HL与LL表示为更加复杂的形式,对于第二类系统，连接两个网络的a能够增加$\lambda_2$的值，（减少网络的积木性modularity），$N&gt;2,a&gt;0$通过LL,HL策略可得$\lambda_2^{HH}&gt;\lambda_2^{HL}&gt;\lambda_2^{LL}$</p>
+<p><strong>所以第二类系统的最优策略是连接高度数的节点</strong></p>
+<p>对于第三类系统，$r^{HH}&lt;r^{HL}&lt;r^{LL}$</p>
+<p>[1]L. Huang, K. Park, Y.-C. Lai, L. Yang, and K. Yang, Phys. Rev. Lett. 97, 164101 (2006).<br>[2] N. Carlson, D.-H. Kim, and A. E. Motter, Chaos 21, 025105<br>(2011).<br>[3] S.-J. Wang, X.-J. Xu, Z.-X. Wu, and Y.-H. Wang, Phys. Rev.<br>E 74, 041915 (2006).<br>[4] J. Aguirre, D. Papo, and J. M. Buldú, Nat. Phys. 9, 230 (2013).<br>[5] O. E. Rössler, Phys. Lett. 57A, 397 (1976).</p>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2016/05/15/Synchronization of Interconnected Networks- The Role of Connector Nodes/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
     <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             <div class="postShorten-header">
